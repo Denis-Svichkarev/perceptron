@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		25036558233CB8C200572B8E /* Neuron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036557233CB8C200572B8E /* Neuron.swift */; };
 		2503655A233CB98200572B8E /* NeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036559233CB98200572B8E /* NeuralNetwork.swift */; };
-		2503655C233CC97A00572B8E /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503655B233CC97A00572B8E /* NetworkLayer.swift */; };
+		2503655C233CC97A00572B8E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503655B233CC97A00572B8E /* Layer.swift */; };
 		25036565233CF77400572B8E /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036561233CF77400572B8E /* Interval.swift */; };
 		25036566233CF77400572B8E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036562233CF77400572B8E /* Operators.swift */; };
 		25036567233CF77400572B8E /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036563233CF77400572B8E /* Vector.swift */; };
 		25036568233CF77400572B8E /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036564233CF77400572B8E /* Matrix.swift */; };
+		2503658E233DF22A00572B8E /* ActivationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503658D233DF22900572B8E /* ActivationFunction.swift */; };
+		253C67B6234220D400D00823 /* GraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253C67B5234220D400D00823 /* GraphBuilder.swift */; };
 		25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254022B38C230042BED4 /* AppDelegate.swift */; };
 		25E1254322B38C230042BED4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254222B38C230042BED4 /* ViewController.swift */; };
 		25E1254622B38C230042BED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E1254422B38C230042BED4 /* Main.storyboard */; };
@@ -44,11 +46,13 @@
 /* Begin PBXFileReference section */
 		25036557233CB8C200572B8E /* Neuron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neuron.swift; sourceTree = "<group>"; };
 		25036559233CB98200572B8E /* NeuralNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralNetwork.swift; sourceTree = "<group>"; };
-		2503655B233CC97A00572B8E /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		2503655B233CC97A00572B8E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		25036561233CF77400572B8E /* Interval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		25036562233CF77400572B8E /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		25036563233CF77400572B8E /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		25036564233CF77400572B8E /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		2503658D233DF22900572B8E /* ActivationFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationFunction.swift; sourceTree = "<group>"; };
+		253C67B5234220D400D00823 /* GraphBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBuilder.swift; sourceTree = "<group>"; };
 		25E1253D22B38C230042BED4 /* Perceptron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perceptron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E1254022B38C230042BED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E1254222B38C230042BED4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +148,9 @@
 				25E1254922B38C260042BED4 /* LaunchScreen.storyboard */,
 				25E1254C22B38C260042BED4 /* Info.plist */,
 				25036559233CB98200572B8E /* NeuralNetwork.swift */,
-				2503655B233CC97A00572B8E /* NetworkLayer.swift */,
+				2503655B233CC97A00572B8E /* Layer.swift */,
+				2503658D233DF22900572B8E /* ActivationFunction.swift */,
+				253C67B5234220D400D00823 /* GraphBuilder.swift */,
 				25036557233CB8C200572B8E /* Neuron.swift */,
 				25036560233CF77400572B8E /* Matrix */,
 			);
@@ -354,13 +360,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E1254322B38C230042BED4 /* ViewController.swift in Sources */,
+				2503658E233DF22A00572B8E /* ActivationFunction.swift in Sources */,
 				25036558233CB8C200572B8E /* Neuron.swift in Sources */,
 				25036568233CF77400572B8E /* Matrix.swift in Sources */,
 				25036567233CF77400572B8E /* Vector.swift in Sources */,
+				253C67B6234220D400D00823 /* GraphBuilder.swift in Sources */,
 				25036566233CF77400572B8E /* Operators.swift in Sources */,
 				25036565233CF77400572B8E /* Interval.swift in Sources */,
 				2503655A233CB98200572B8E /* NeuralNetwork.swift in Sources */,
-				2503655C233CC97A00572B8E /* NetworkLayer.swift in Sources */,
+				2503655C233CC97A00572B8E /* Layer.swift in Sources */,
 				25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

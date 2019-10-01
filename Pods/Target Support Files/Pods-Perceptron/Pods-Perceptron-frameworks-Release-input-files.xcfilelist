@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Perceptron/Pods-Perceptron-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/Surge/Surge.framework

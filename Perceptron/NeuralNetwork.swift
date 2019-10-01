@@ -10,72 +10,66 @@ import UIKit
 
 class NeuralNetwork: NSObject {
 
-    var inputLayerSize: Int = 0
-    var hiddenLayerSize: Int = 0
-    var outputLayerSize: Int = 0
+    public static var learningRate: Float = 0.3
+    public static var momentum: Float = 1
+    public static var iterations: Int = 1000
+    public static var currentError = [Float]()
+    public static var averageError = [Float]()
+    private var layers: [Layer] = []
     
-    var w1: Matrix<Double>?
-    var w2: Matrix<Double>?
-
-    var z2: Matrix<Double>?
-    var a2: Matrix<Double>?
-    var z3: Matrix<Double>?
-    var a3: Matrix<Double>?
-    
-    init(inputLayerSize: Int, outputLayerSize: Int, hiddenLayerSize: Int) {
-        self.inputLayerSize = inputLayerSize
-        self.outputLayerSize = outputLayerSize
-        self.hiddenLayerSize = hiddenLayerSize
-
-        w1 = rand(width: hiddenLayerSize, inputLayerSize)
-        w2 = rand(width: outputLayerSize, hiddenLayerSize)
+    init(inputLayerSize: Int, hiddenLayerSize: Int, outputLayerSize: Int) {
+        self.layers.append(Layer(inputSize: inputLayerSize, outputSize: hiddenLayerSize))
+        self.layers.append(Layer(inputSize: hiddenLayerSize, outputSize: outputLayerSize))
     }
     
-    func forward(x: Matrix<Double>) -> Matrix<Double>? {
-        guard let w1 = w1, let w2 = w2 else {
-            return nil
+    public func run(input: [Float]) -> [Float] {
+     
+        var activations = input
+        
+        for i in 0..<layers.count {
+            activations = layers[i].run(inputArray: activations)
         }
         
-        // Propagate inputs through first layer
-        z2 = x * w1′
-        
-        // Apply activation function
-        a2 = sigmoid(z: z2!)
-        
-        // Propagate values through third layer
-        z3 = a2! * w2′
-        
-        // Apply activation function
-        a3 = sigmoid(z: z3!)
-        
-        return a3
+        return activations
     }
-}
-
-func randd() -> Double {
-    return Double(arc4random()) / Double(RAND_MAX)
-}
-
-func sigmoid(z: Double) -> Double {
-    return 1.0 / (1.0 + exp(-z))
-}
-
-func rand(width: Int, _ height: Int) -> Matrix<Double> {
-    var result = Matrix(repeating: 0, rows: width, columns: height)
-    for i in 0..<result.rows {
-        for j in 0..<result.columns {
-            result[i, j] = randd()
+    
+    public func train(input: [Float], targetOutput: [Float], learningRate: Float, momentum: Float) {
+        
+        let calculatedOutput = run(input: input)
+        
+        var error = zip(targetOutput, calculatedOutput).map { $0 - $1 }
+        NeuralNetwork.currentError.append(error[0])
+        
+        for i in (0...layers.count - 1).reversed() {
+            error = layers[i].train(error: error, learningRate: learningRate, momentum: momentum)
         }
     }
-    return result
 }
 
-func sigmoid(z: Matrix<Double>) -> Matrix<Double> {
-    var m = Matrix(repeating: 0, rows: z.rows, columns: z.columns)
-    for i in 0..<z.rows {
-        for j in 0..<z.columns {
-            m[i, j] = sigmoid(z: z[i, j])
-        }
-    }
-    return m
-}
+//func randd() -> Double {
+//    return Double(arc4random()) / Double(RAND_MAX)
+//}
+
+//func sigmoid(z: Double) -> Double {
+//    return 1.0 / (1.0 + exp(-z))
+//}
+
+//func rand(width: Int, _ height: Int) -> Matrix<Double> {
+//    var result = Matrix(repeating: 0, rows: width, columns: height)
+//    for i in 0..<result.rows {
+//        for j in 0..<result.columns {
+//            result[i, j] = randd()
+//        }
+//    }
+//    return result
+//}
+//
+//func sigmoid(z: Matrix<Double>) -> Matrix<Double> {
+//    var m = Matrix(repeating: 0, rows: z.rows, columns: z.columns)
+//    for i in 0..<z.rows {
+//        for j in 0..<z.columns {
+//            m[i, j] = sigmoid(z: z[i, j])
+//        }
+//    }
+//    return m
+//}
