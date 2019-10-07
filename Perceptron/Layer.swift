@@ -21,7 +21,6 @@ class Layer: NSObject {
     private var output: [Float]
     private var input: [Float]
     private var weights: [Float]
-    private var previousWeights: [Float]
     
     init(inputSize: Int, outputSize: Int) {
         self.output = [Float](repeating: 0, count: outputSize)
@@ -29,7 +28,6 @@ class Layer: NSObject {
         self.weights = (0..<(1 + inputSize) * outputSize).map { _ in
             return (-2.0...2.0).random()
         }
-        previousWeights = [Float](repeating: 0, count: weights.count)
     }
     
     public func run(inputArray: [Float]) -> [Float] {
@@ -53,23 +51,21 @@ class Layer: NSObject {
         return output
     }
     
-    public func train(error: [Float], learningRate: Float, momentum: Float) -> [Float] {
+    public func train(error: [Float], alpha: Float, m: Float) -> [Float] {
         
         var offset = 0
-        var nextError = [Float](repeating: 0, count: input.count)
+        var nextError = [Float](repeating: 0, count: input.count) // берем все инпуты с предыдущего слоя и именно столько новых ошибок передадим им
         
         for i in 0..<output.count {
-            let delta = error[i] * ActivationFunction.sigmoidDerivative(x: output[i])
+            let g = ActivationFunction.sigmoidDerivative(x: output[i]) // производная ФА с аргументом, полученным при forward prop
             
             for j in 0..<input.count {
                 let weightIndex = offset + j
-                nextError[j] = nextError[j] + weights[weightIndex] * delta
-                let dw = input[j] * delta * learningRate
-                weights[weightIndex] += previousWeights[weightIndex] * momentum + dw
-                previousWeights[weightIndex] = dw
+                nextError[j] += weights[weightIndex] * error[i] * g // посчитали новую ошибку
+                weights[weightIndex] = weights[weightIndex] * m + (alpha * input[j] * error[i] * g) // пересчитали все веса на этом слое
             }
             
-            offset += input.count
+            offset += input.count // дурацкий сдвиг по весам, надо бы избавиться от такой структуры циклов
         }
         
         return nextError

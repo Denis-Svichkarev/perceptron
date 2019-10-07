@@ -24,6 +24,18 @@ import Charts
     1. y = data * Theta
  
     Theta is matrix of weights.
+ 
+ 
+ 
+     Алгоритм обратного распространения ошибки следующий:
+ 
+     1. Инициализировать синаптические веса маленькими случайными значениями.
+     2. Выбрать очередную обучающую пару из обучающего множества; подать входной вектор на вход сети.
+     3. Вычислить выход сети.
+     4. Вычислить разность между выходом сети и требуемым выходом (целевым вектором обучающей пары).
+     5. Подкорректировать веса сети для минимизации ошибки (как см. ниже).
+     6. Повторять шаги с 2 по 5 для каждого вектора обучающего множества до тех пор, пока ошибка на всем множестве не достигнет приемлемого уровня.
+ 
  */
 
 class ViewController: UIViewController {
@@ -58,6 +70,12 @@ class ViewController: UIViewController {
             
             NeuralNetwork.averageError.append(sum / Float(NeuralNetwork.currentError.count))
             NeuralNetwork.currentError.removeAll()
+            
+//            for (i, layer) in network.layers.enumerated() {
+//                if i == 0 {
+//                    print("\(i): \(layer.weights)")
+//                }
+//            }
         }
         
         // Prediction

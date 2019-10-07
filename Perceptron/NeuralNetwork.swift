@@ -40,7 +40,7 @@ class NeuralNetwork: NSObject {
         var error = zip(targetOutput, calculatedOutput).map { $0 - $1 }
         NeuralNetwork.currentError.append(error[0])
         
-        for i in (0...layers.count - 1).reversed() {
+        for i in (0...layers.count - 1).reversed() { // идем в обратном направлении и с каждым левым слоем получаем ошибки правого, обрабатываем и передаем дальше левым
             error = layers[i].train(error: error, learningRate: learningRate, momentum: momentum)
         }
     }
