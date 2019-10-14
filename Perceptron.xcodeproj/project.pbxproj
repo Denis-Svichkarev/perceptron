@@ -16,6 +16,7 @@
 		25036568233CF77400572B8E /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036564233CF77400572B8E /* Matrix.swift */; };
 		2503658E233DF22A00572B8E /* ActivationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503658D233DF22900572B8E /* ActivationFunction.swift */; };
 		253C67B6234220D400D00823 /* GraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253C67B5234220D400D00823 /* GraphBuilder.swift */; };
+		25ADA0E023521E1D00ADEF7C /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADA0DF23521E1D00ADEF7C /* Weight.swift */; };
 		25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254022B38C230042BED4 /* AppDelegate.swift */; };
 		25E1254322B38C230042BED4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254222B38C230042BED4 /* ViewController.swift */; };
 		25E1254622B38C230042BED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E1254422B38C230042BED4 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		25036564233CF77400572B8E /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		2503658D233DF22900572B8E /* ActivationFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationFunction.swift; sourceTree = "<group>"; };
 		253C67B5234220D400D00823 /* GraphBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBuilder.swift; sourceTree = "<group>"; };
+		25ADA0DF23521E1D00ADEF7C /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		25E1253D22B38C230042BED4 /* Perceptron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perceptron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E1254022B38C230042BED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E1254222B38C230042BED4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,9 +151,10 @@
 				25E1254C22B38C260042BED4 /* Info.plist */,
 				25036559233CB98200572B8E /* NeuralNetwork.swift */,
 				2503655B233CC97A00572B8E /* Layer.swift */,
+				25036557233CB8C200572B8E /* Neuron.swift */,
+				25ADA0DF23521E1D00ADEF7C /* Weight.swift */,
 				2503658D233DF22900572B8E /* ActivationFunction.swift */,
 				253C67B5234220D400D00823 /* GraphBuilder.swift */,
-				25036557233CB8C200572B8E /* Neuron.swift */,
 				25036560233CF77400572B8E /* Matrix */,
 			);
 			path = Perceptron;
@@ -370,6 +373,7 @@
 				2503655A233CB98200572B8E /* NeuralNetwork.swift in Sources */,
 				2503655C233CC97A00572B8E /* Layer.swift in Sources */,
 				25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */,
+				25ADA0E023521E1D00ADEF7C /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

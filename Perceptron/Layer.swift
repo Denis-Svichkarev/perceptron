@@ -8,21 +8,37 @@
 
 import UIKit
 
-public extension ClosedRange where Bound: FloatingPoint {
-    public func random() -> Bound {
-        let range = self.upperBound - self.lowerBound
-        let randomValue = (Bound(arc4random_uniform(UINT32_MAX)) / Bound(UINT32_MAX)) * range + self.lowerBound
-        return randomValue
-    }
+enum LayerType {
+    case input, hidden, output
 }
 
 class Layer: NSObject {
     
-    private var output: [Float]
-    private var input: [Float]
-    private var weights: [Float]
+    var layerType: LayerType?
+    var index: Int = 0
+    var neurons: [Neuron] = []
     
-    init(inputSize: Int, outputSize: Int) {
+//    var input: [Neuron] = []
+//    var output: [Neuron] = []
+    
+    init(layerType: LayerType, index: Int, count: Int, bias: Bool) {
+        self.layerType = layerType
+        self.index = index
+        
+        for i in 0..<count {
+            neurons.append(Neuron(name: "x\(i)(\(index))"))
+        }
+        
+        if bias {
+            neurons.append(Neuron(name: "x\(count)(\(index))"))
+        }
+    }
+    
+//    private var output: [Float]
+//    private var input: [Float]
+//    private var weights: [Float]
+    
+    /*init(inputSize: Int, outputSize: Int) {
         self.output = [Float](repeating: 0, count: outputSize)
         self.input = [Float](repeating: 0, count: inputSize + 1)
         self.weights = (0..<(1 + inputSize) * outputSize).map { _ in
@@ -69,5 +85,5 @@ class Layer: NSObject {
         }
         
         return nextError
-    }
+    }*/
 }

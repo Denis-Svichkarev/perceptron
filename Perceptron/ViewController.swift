@@ -9,35 +9,6 @@
 import UIKit
 import Charts
 
-/*
-    Training
- 
-     1. Randomly initialize weights
-     2. Forward propagation to get h(x) for any x
-     3. Compute cost function J(Theta)
-     4. Backpropagation to compute partial derivatives d/dTheta * J(Theta) (Compute D = D + delta(a))
-     5. Gradient checking
-     6. Gradient descent to minimize J(Theta) and find best Theta
- 
-    Prediction
- 
-    1. y = data * Theta
- 
-    Theta is matrix of weights.
- 
- 
- 
-     Алгоритм обратного распространения ошибки следующий:
- 
-     1. Инициализировать синаптические веса маленькими случайными значениями.
-     2. Выбрать очередную обучающую пару из обучающего множества; подать входной вектор на вход сети.
-     3. Вычислить выход сети.
-     4. Вычислить разность между выходом сети и требуемым выходом (целевым вектором обучающей пары).
-     5. Подкорректировать веса сети для минимизации ошибки (как см. ниже).
-     6. Повторять шаги с 2 по 5 для каждого вектора обучающего множества до тех пор, пока ошибка на всем множестве не достигнет приемлемого уровня.
- 
- */
-
 class ViewController: UIViewController {
 
     @IBOutlet var chartView: LineChartView!
@@ -57,27 +28,9 @@ class ViewController: UIViewController {
         // Training
         
         let network = NeuralNetwork(inputLayerSize: 3, hiddenLayerSize: 3, outputLayerSize: 1)
-        
-        for _ in 0..<NeuralNetwork.iterations {
-            for i in 0..<traningResults.count {
-                network.train(input: traningData[i], targetOutput: traningResults[i], learningRate: NeuralNetwork.learningRate, momentum: NeuralNetwork.momentum)
-            }
-            
-            var sum: Float = 0.0
-            for i in NeuralNetwork.currentError {
-                sum += i
-            }
-            
-            NeuralNetwork.averageError.append(sum / Float(NeuralNetwork.currentError.count))
-            NeuralNetwork.currentError.removeAll()
-            
-//            for (i, layer) in network.layers.enumerated() {
-//                if i == 0 {
-//                    print("\(i): \(layer.weights)")
-//                }
-//            }
-        }
-        
+
+        network.run(input: traningData, targetOutput: traningResults)
+
         // Prediction
         
         let testData: [[Float]] = [ [0.4, 0.1, 0.5],
@@ -87,12 +40,12 @@ class ViewController: UIViewController {
                                     [0.8, 0.7, 0.6] ]
         
         for i in 0..<testData.count {
-            var t = testData[i]
-            print("\(t[0]), \(t[1]), \(t[1])  -- \(network.run(input: t))")
+            var x = testData[i]
+            print("\(x[0]), \(x[1]), \(x[1])  -- \(network.forward(input: x, targetOutput: nil))")
         }
         
         print("finish")
-        GraphBuilder.draw(chartView: chartView, data: NeuralNetwork.averageError)
+        GraphBuilder.draw(chartView: chartView, data: network.averageErrors)
     }
 }
 
