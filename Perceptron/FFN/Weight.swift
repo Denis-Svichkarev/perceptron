@@ -10,8 +10,8 @@ import UIKit
 
 class Weight: NSObject {
 
-    var x: Neuron!
-    var y: Neuron!
+    var prev: Neuron!
+    var next: Neuron!
     
     var w: Float = 0
     
@@ -22,6 +22,6 @@ class Weight: NSObject {
     }
     
     func log() {
-        print(x.name + "-" + y.name)
+        print(prev.name + "-" + next.name)
     }
 }
