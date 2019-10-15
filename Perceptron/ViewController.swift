@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
         GraphBuilder.configure(chartView: chartView)
         
         let traningData: [[Float]] = [ [0,0,0],
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
                                     [0.8, 0.7, 0.6] ]
         
         for i in 0..<testData.count {
-            var x = testData[i]
+            let x = testData[i]
             print("\(x[0]), \(x[1]), \(x[1])  -- \(network.forward(input: x, targetOutput: nil))")
         }
         
@@ -48,4 +48,3 @@ class ViewController: UIViewController {
         GraphBuilder.draw(chartView: chartView, data: network.averageErrors)
     }
 }
-

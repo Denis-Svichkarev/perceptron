@@ -268,13 +268,16 @@
 				TargetAttributes = {
 					25E1253C22B38C230042BED4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1110;
 					};
 					25E1255022B38C260042BED4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1110;
 						TestTargetID = 25E1253C22B38C230042BED4;
 					};
 					25E1255B22B38C260042BED4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1110;
 						TestTargetID = 25E1253C22B38C230042BED4;
 					};
 				};
@@ -568,7 +571,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.Perceptron";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -587,7 +590,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.Perceptron";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -607,7 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Perceptron.app/Perceptron";
 			};
@@ -628,7 +631,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Perceptron.app/Perceptron";
 			};
@@ -648,7 +651,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Perceptron;
 			};
@@ -668,7 +671,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Perceptron;
 			};
