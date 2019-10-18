@@ -27,9 +27,10 @@ class NeuralNetwork: NSObject {
     
     init(inputLayerSize: Int, hiddenLayerSize: Int, outputLayerSize: Int) {
         
-        layers.append(Layer(layerType: .input, index: 1, count: 3, bias: true))
-        layers.append(Layer(layerType: .hidden, index: 2, count: 3, bias: true))
-        layers.append(Layer(layerType: .output, index: 3, count: 1, bias: false))
+        layers.append(Layer(layerType: .input, index: 1, count: inputLayerSize, bias: true))
+        layers.append(Layer(layerType: .hidden, index: 2, count: hiddenLayerSize, bias: true))
+      //  layers.append(Layer(layerType: .hidden, index: 3, count: hiddenLayerSize, bias: true))
+        layers.append(Layer(layerType: .output, index: 3, count: outputLayerSize, bias: false))
         
 //        let w1: [Float] = (0..<(inputLayerSize + 1) * hiddenLayerSize).map { _ in
 //            return (-2.0...2.0).random()
@@ -41,11 +42,16 @@ class NeuralNetwork: NSObject {
 
         var w1 = [Weight]()
         var w2 = [Weight]()
+       //var w3 = [Weight]()
         
         for _ in 0..<(inputLayerSize + 1) * hiddenLayerSize {
             //w1.append(Weight(w: weights1[i]))
             w1.append(Weight(w: (-2.0...2.0).random()))
         }
+        
+//        for _ in 0..<(hiddenLayerSize + 1) * hiddenLayerSize {
+//            w2.append(Weight(w: (-2.0...2.0).random()))
+//        }
         
         for _ in 0..<(hiddenLayerSize + 1) * outputLayerSize {
             //w2.append(Weight(w: weights2[i]))
@@ -54,6 +60,7 @@ class NeuralNetwork: NSObject {
         
         weights.append(w1)
         weights.append(w2)
+//        weights.append(w3)
         
         for i in 0..<layers.count - 1 {
             let count = (layers[i + 1].layerType == .output) ? 1 : layers[i + 1].neurons.count - 1
@@ -150,12 +157,65 @@ class NeuralNetwork: NSObject {
 
     // MARK: - Model
     
-    func importModel() {
-        
+    func importModel(name: String) {
+
+        if let text = getStringFromFilePath(name) {
+            weights.removeAll()
+            
+            let lines = text.lines
+            
+            for line in lines {
+                let numberDelimiter = ":"
+                let token1 = line.components(separatedBy: numberDelimiter)
+                
+                let weightDelimiter = ";"
+                let token2 = token1[1].components(separatedBy: weightDelimiter)
+                
+                var weights = [Weight]()
+                
+                for i in 0..<token2.count {
+                    if let w = Float(token2[i]) {
+                        weights.append(Weight(w: w))
+                    }
+                }
+                
+                self.weights.append(weights)
+            }
+            
+            for i in 0..<layers.count - 1 {
+                let count = (layers[i + 1].layerType == .output) ? 1 : layers[i + 1].neurons.count - 1
+                for i2 in 0..<count {
+                    for i3 in 0..<layers[i].neurons.count {
+                        weights[i][i3 + i2 * layers[i].neurons.count].prev = layers[i].neurons[i3]
+                        weights[i][i3 + i2 * layers[i].neurons.count].next = layers[i + 1].neurons[i2]
+                    }
+                }
+            }
+        }
     }
     
     func exportModel() {
         
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH-mm-ss dd.MM.yy"
+        let dateString = formatter.string(from: date)
+        
+        var text = ""
+        
+        for i in 0..<weights.count {
+            text.append("\(i):")
+            
+            for j in 0..<weights[i].count {
+                text.append("\(weights[i][j].w);")
+            }
+            
+            if i != weights.count - 1 {
+                text.append("\n")
+            }
+        }
+        
+        writeToFileString("weights " + dateString, text: text)
     }
     
     // MARK: - Helpers

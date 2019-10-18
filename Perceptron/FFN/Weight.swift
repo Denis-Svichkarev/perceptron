@@ -10,8 +10,8 @@ import UIKit
 
 class Weight: NSObject {
 
-    var prev: Neuron!
-    var next: Neuron!
+    var prev = Neuron()
+    var next = Neuron()
     
     var w: Float = 0
     
