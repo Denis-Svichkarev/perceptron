@@ -20,6 +20,8 @@
 		25ADA0E023521E1D00ADEF7C /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADA0DF23521E1D00ADEF7C /* Weight.swift */; };
 		25AEC98D235A2D7700429BDA /* ReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC98C235A2D7700429BDA /* ReadWrite.swift */; };
 		25AEC98F235A336B00429BDA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC98E235A336B00429BDA /* String.swift */; };
+		25AEC991235B19CE00429BDA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC990235B19CE00429BDA /* Double.swift */; };
+		25AEC993235B1B0A00429BDA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC992235B1B0A00429BDA /* Log.swift */; };
 		25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254022B38C230042BED4 /* AppDelegate.swift */; };
 		25E1254322B38C230042BED4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254222B38C230042BED4 /* ViewController.swift */; };
 		25E1254622B38C230042BED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E1254422B38C230042BED4 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		25ADA0DF23521E1D00ADEF7C /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		25AEC98C235A2D7700429BDA /* ReadWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWrite.swift; sourceTree = "<group>"; };
 		25AEC98E235A336B00429BDA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		25AEC990235B19CE00429BDA /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		25AEC992235B1B0A00429BDA /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		25E1253D22B38C230042BED4 /* Perceptron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perceptron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E1254022B38C230042BED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E1254222B38C230042BED4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -162,13 +166,13 @@
 			children = (
 				25E1254022B38C230042BED4 /* AppDelegate.swift */,
 				25E1254222B38C230042BED4 /* ViewController.swift */,
+				25E822B6235A102D00F7961B /* Utilities */,
+				25457D772354EFEF0048B35D /* FFN */,
+				25036560233CF77400572B8E /* Matrix */,
 				25E1254422B38C230042BED4 /* Main.storyboard */,
 				25E1254722B38C260042BED4 /* Assets.xcassets */,
 				25E1254922B38C260042BED4 /* LaunchScreen.storyboard */,
 				25E1254C22B38C260042BED4 /* Info.plist */,
-				25E822B6235A102D00F7961B /* Utilities */,
-				25457D772354EFEF0048B35D /* FFN */,
-				25036560233CF77400572B8E /* Matrix */,
 			);
 			path = Perceptron;
 			sourceTree = "<group>";
@@ -199,6 +203,8 @@
 				253C67B5234220D400D00823 /* GraphBuilder.swift */,
 				25AEC98C235A2D7700429BDA /* ReadWrite.swift */,
 				25AEC98E235A336B00429BDA /* String.swift */,
+				25AEC990235B19CE00429BDA /* Double.swift */,
+				25AEC992235B1B0A00429BDA /* Log.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -392,11 +398,13 @@
 			files = (
 				25E1254322B38C230042BED4 /* ViewController.swift in Sources */,
 				2503658E233DF22A00572B8E /* ActivationFunction.swift in Sources */,
+				25AEC991235B19CE00429BDA /* Double.swift in Sources */,
 				25457D792354F1130048B35D /* Random.swift in Sources */,
 				25036558233CB8C200572B8E /* Neuron.swift in Sources */,
 				25036568233CF77400572B8E /* Matrix.swift in Sources */,
 				25036567233CF77400572B8E /* Vector.swift in Sources */,
 				253C67B6234220D400D00823 /* GraphBuilder.swift in Sources */,
+				25AEC993235B1B0A00429BDA /* Log.swift in Sources */,
 				25AEC98D235A2D7700429BDA /* ReadWrite.swift in Sources */,
 				25036566233CF77400572B8E /* Operators.swift in Sources */,
 				25036565233CF77400572B8E /* Interval.swift in Sources */,

@@ -155,7 +155,67 @@ class NeuralNetwork: NSObject {
         }
     }
 
-    // MARK: - Model
+    // MARK: - Data
+    
+    func importTrainingData(name: String) -> (data: [[Float]], results: [[Float]])? {
+        
+        if let text = getStringFromFilePath(name) {
+            var data = [[Float]]()
+            var results = [[Float]]()
+            
+            let lines = text.lines
+            
+            for i in 0..<lines.count {
+                let resultDelimiter = ":"
+                let token1 = lines[i].components(separatedBy: resultDelimiter)
+                
+                let exampleDelimiter = ";"
+                let token2 = token1[1].components(separatedBy: exampleDelimiter)
+                
+                if let result = Float(token1[0]) {
+                    results.append([result])
+                }
+                
+                data.append([])
+                
+                for j in 0..<token2.count {
+                    if let example = Float(token2[j]) {
+                        data[i].append(example)
+                    }
+                }
+            }
+            
+            return (data, results)
+        }
+        
+        return nil
+    }
+    
+    func importTestData(name: String) -> [[Float]]? {
+        
+        if let text = getStringFromFilePath(name) {
+            var data = [[Float]]()
+            
+            let lines = text.lines
+            
+            for i in 0..<lines.count {
+                let exampleDelimiter = ";"
+                let token1 = lines[i].components(separatedBy: exampleDelimiter)
+                
+                data.append([])
+                
+                for j in 0..<token1.count {
+                    if let example = Float(token1[j]) {
+                        data[i].append(example)
+                    }
+                }
+            }
+            
+            return data
+        }
+        
+        return nil
+    }
     
     func importModel(name: String) {
 

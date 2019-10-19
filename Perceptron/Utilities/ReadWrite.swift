@@ -35,6 +35,7 @@ func writeToFileString(_ filename: String, text: String) {
     if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
         
         let path = dir.appendingPathComponent(filename + ".txt")
+        print("Saved: " + filename + ".txt")
         
         do {
             try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)

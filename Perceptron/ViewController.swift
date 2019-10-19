@@ -16,46 +16,51 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             
-//        for i in 0..<100 {
-//            //let c = Double.random(in: 0...100)
-//            let x = Double.random(in: 1...2)
-//            let y = pow(x, 3)
-//            print("\(i + 1)) \(round(100 * y)/100)")
-//        }
-//        
-//        return
-        
         GraphBuilder.configure(chartView: chartView)
         
-//        let traningData: [[Float]] = [ [0,0,0],
-//                                       [0,1,1],
-//                                       [1,0,1],
-//                                       [1,1,1] ]
-//
-//        let traningResults: [[Float]] = [ [0], [0], [0], [1] ]
-        
-        // Training
+        // MARK: - Initialization
         
         let network = NeuralNetwork(inputLayerSize: 3, hiddenLayerSize: 3, outputLayerSize: 1)
 
-        network.importModel(name: "weights 20-48-24 18.10.19.txt")
+        //        let traningData: [[Float]] = [ [0,0,0],
+        //                                       [0,1,1],
+        //                                       [1,0,1],
+        //                                       [1,1,1] ]
+        //
+        //        let traningResults: [[Float]] = [ [0], [0], [0], [1] ]
+                
+        guard let trainingData = network.importTrainingData(name: "training ex1.txt") else {
+            print("Could not load training data")
+            return
+        }
+        
+        //        let testData: [[Float]] = [ [0.4, 0.1, 0.5],
+        //                                    [0.1, 0.1, 0.5],
+        //                                    [1.0, 0.9, 0.7],
+        //                                    [0.0, 0.7, 0.1],
+        //                                    [0.8, 0.7, 0.6] ]
+            
+        guard let testData = network.importTestData(name: "test ex1.txt") else {
+            print("Could not load test data")
+            return
+        }
+        
+        // MARK: - Training
         
         //network.run(input: traningData, targetOutput: traningResults)
 
-        // Prediction
+        network.run(input: trainingData.data, targetOutput: trainingData.results)
         
-        let testData: [[Float]] = [ [0.4, 0.1, 0.5],
-                                    [0.1, 0.1, 0.5],
-                                    [1.0, 0.9, 0.7],
-                                    [0.0, 0.7, 0.1],
-                                    [0.8, 0.7, 0.6] ]
+        //network.importModel(name: "weights 20-48-24 18.10.19.txt")
+               
+        // MARK: - Prediction
         
-        for i in 0..<testData.count {
-            let x = testData[i]
-            print("\(x[0]), \(x[1]), \(x[1])  -- \(network.forward(input: x, targetOutput: nil))")
-        }
+        print("Predictions:\n")
         
-        print("finish")
+        let predictionsString = Log.getPredictionsString(network: network, data: testData)
+        print(predictionsString)
+        
+        print("Finish")
         
         //network.exportModel()
         
