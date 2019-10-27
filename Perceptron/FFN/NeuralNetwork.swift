@@ -189,16 +189,26 @@ class NeuralNetwork: NSObject {
                 let token1 = lines[i].components(separatedBy: resultDelimiter)
                 
                 let exampleDelimiter = ";"
-                let token2 = token1[1].components(separatedBy: exampleDelimiter)
                 
-                if let result = Float(token1[0]) {
-                    results.append([result])
+                let targets = token1[0].components(separatedBy: exampleDelimiter)
+                let features = token1[1].components(separatedBy: exampleDelimiter)
+                
+//                if let result = Float(token1[0]) {
+//                    results.append([result])
+//                }
+                
+                results.append([])
+                
+                for j in 0..<targets.count {
+                    if let label = Float(targets[j]) {
+                        results[i].append(label)
+                    }
                 }
                 
                 data.append([])
                 
-                for j in 0..<token2.count {
-                    if let example = Float(token2[j]) {
+                for j in 0..<features.count {
+                    if let example = Float(features[j]) {
                         data[i].append(example)
                     }
                 }
