@@ -15,32 +15,65 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
         GraphBuilder.configure(chartView: chartView)
         
         // MARK: - Initialization
         
         let network = NeuralNetwork(inputLayerSize: 3, hiddenLayerSize: 3, outputLayerSize: 1)
 
-        //        let traningData: [[Float]] = [ [0,0,0],
-        //                                       [0,1,1],
-        //                                       [1,0,1],
-        //                                       [1,1,1] ]
-        //
-        //        let traningResults: [[Float]] = [ [0], [0], [0], [1] ]
+//                let traningData: [[Float]] = [ [0,0,0,0],
+//                                               [0,1,1,0],
+//                                               [1,1,0,0],
+//                                               [0,0,1,1],
+//
+//                                               [1,1,1,0],
+//                                               [0,1,1,1],
+//                                               [1,1,1,1],
+//                                               [0,1,0,1],
+//
+//                                               [1,0,1,0],
+//                                               [1,0,0,1],
+//                                               [0,0,1,0],
+//                                               [0,1,0,0],
+//
+//                                               [1,0,0,0],
+//                                               [0,0,0,1],
+//                                               [1,0,1,1],
+//                                               [1,1,0,1]]
+//
+//                let traningResults: [[Float]] = [ [0, 0],
+//                                                  [0, 0],
+//                                                  [1, 0],
+//                                                  [0, 1],
+//
+//                                                  [1, 0],
+//                                                  [0, 1],
+//                                                  [1, 1],
+//                                                  [0, 0],
+//
+//                                                  [0, 0],
+//                                                  [0, 0],
+//                                                  [0, 0],
+//                                                  [0, 0],
+//
+//                                                  [0, 0],
+//                                                  [0, 0],
+//                                                  [0, 1],
+//                                                  [1, 0],]
                 
-        guard let trainingData = network.importTrainingData(name: "training ex1.txt") else {
-            print("Could not load training data")
-            return
-        }
+//        guard let trainingData = network.importTrainingData(name: "training ex2.txt") else {
+//            print("Could not load training data")
+//            return
+//        }
         
-        //        let testData: [[Float]] = [ [0.4, 0.1, 0.5],
-        //                                    [0.1, 0.1, 0.5],
-        //                                    [1.0, 0.9, 0.7],
-        //                                    [0.0, 0.7, 0.1],
-        //                                    [0.8, 0.7, 0.6] ]
+//        let testData: [[Float]] = [ [0.3, 0.1, 0.1, 0.7],
+//                                    [0.7, 0.9, 0.3, 0.1],
+//                                    [0.0, 0.1, 0.7, 0.8],
+//                                    [0.0, 0.1, 0.1, 1.0],
+//                                    [0.9, 0.7, 0.9, 1.0] ]
             
-        guard let testData = network.importTestData(name: "test ex1.txt") else {
+        guard let testData = network.importTestData(name: "test ex2.txt") else {
             print("Could not load test data")
             return
         }
@@ -49,9 +82,9 @@ class ViewController: UIViewController {
         
         //network.run(input: traningData, targetOutput: traningResults)
 
-        network.run(input: trainingData.data, targetOutput: trainingData.results)
+        //network.run(input: trainingData.data, targetOutput: trainingData.results)
         
-        //network.importModel(name: "weights 20-48-24 18.10.19.txt")
+        network.importModel(name: "weights 27.10.19 21-42-29.txt")
                
         // MARK: - Prediction
         
@@ -64,6 +97,8 @@ class ViewController: UIViewController {
         
         //network.exportModel()
         
-        GraphBuilder.draw(chartView: chartView, data: network.averageErrors)
+        if network.averageErrors.count > 0 {
+            GraphBuilder.draw(chartView: chartView, data: network.averageErrors)
+        }
     }
 }

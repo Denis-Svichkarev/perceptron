@@ -10,6 +10,8 @@ import UIKit
 
 class Log: NSObject {
     
+    static let labels = ["A", "B", "C"]
+    
     static func getPredictionsString(network: NeuralNetwork, data: [[Float]]) -> String {
         
         var stringX = ""
@@ -25,13 +27,21 @@ class Log: NSObject {
                 if j != x.count - 1 {
                     stringX += ", "
                 } else {
-                    stringX += "] : "
+                    stringX += "] -> "
                 }
             }
             
-            let prediction = Double(network.forward(input: x, targetOutput: nil))
+            let predictions = network.forward(input: x, targetOutput: nil)
             
-            stringX += "\((prediction * 100).rounded(toPlaces: 2))%\n"
+            for j in 0..<predictions.count {
+                let value = Double(predictions[j] * 100).rounded(toPlaces: 2)
+                
+                if j != predictions.count - 1 {
+                    stringX += labels[j] + ": \(value)%, "
+                } else {
+                    stringX += labels[j] + ": \(value)%\n"
+                }
+            }
         }
         
         return stringX

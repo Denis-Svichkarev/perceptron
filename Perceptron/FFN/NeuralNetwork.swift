@@ -16,8 +16,8 @@ class NeuralNetwork: NSObject {
     var layers: [Layer] = []
     var weights: [[Weight]] = []
     
-    var errors: [Float] = []            // array of errors of the neurons output per an iteration
-    var averageErrors: [Float] = []     // array of average errors per N iterations
+    var errors: [[Float]] = []            // array of errors of the neurons output per an iteration
+    var averageErrors: [[Float]] = []     // array of average errors per N iterations
     
     static var iterations: Int = 1000
     static var learningRate: Float = 0.3
@@ -63,7 +63,7 @@ class NeuralNetwork: NSObject {
 //        weights.append(w3)
         
         for i in 0..<layers.count - 1 {
-            let count = (layers[i + 1].layerType == .output) ? 1 : layers[i + 1].neurons.count - 1
+            let count = (layers[i + 1].layerType == .output) ? layers[i + 1].neurons.count : layers[i + 1].neurons.count - 1
             for i2 in 0..<count {
                 for i3 in 0..<layers[i].neurons.count {
                     weights[i][i3 + i2 * layers[i].neurons.count].prev = layers[i].neurons[i3]
@@ -92,7 +92,7 @@ class NeuralNetwork: NSObject {
         }
     }
     
-    func forward(input: [Float], targetOutput: [Float]?) -> Float {
+    func forward(input: [Float], targetOutput: [Float]?) -> [Float] {
         
         for i in 0..<input.count {
             weights[0][i].prev.x = input[i]
@@ -102,7 +102,7 @@ class NeuralNetwork: NSObject {
         
         for L in 0..<layers.count - 1 {
             layers[L].neurons.last!.x = 1
-            let count = (layers[L + 1].layerType == .output) ? 1 : layers[L + 1].neurons.count - 1
+            let count = (layers[L + 1].layerType == .output) ? layers[L + 1].neurons.count : layers[L + 1].neurons.count - 1
             
             for i in 0..<count {
                 var sum: Float = 0.0
@@ -118,13 +118,32 @@ class NeuralNetwork: NSObject {
             }
         }
         
+        var outputs = [Neuron]()
+        
+        for i in 0..<weights.last!.count {
+            if !outputs.contains(weights.last![i].next) {
+                outputs.append(weights.last![i].next)
+            }
+        }
+        
         if let targetOutput = targetOutput {
-            let error = targetOutput[0] - weights.last![0].next.x
-            weights.last![0].next.error = error
+            var error = [Float](repeating: 0, count: targetOutput.count)
+            
+            for i in 0..<targetOutput.count {
+                error[i] = targetOutput[i] - outputs[i].x
+                outputs[i].error = error[i]
+            }
+            
             return error
             
         } else {
-            return weights.last![0].next.x
+            var result = [Float](repeating: 0, count: layers.last!.neurons.count)
+            
+            for i in 0..<layers.last!.neurons.count {
+                result[i] = outputs[i].x
+            }
+            
+            return result
         }
     }
     
@@ -243,7 +262,7 @@ class NeuralNetwork: NSObject {
             }
             
             for i in 0..<layers.count - 1 {
-                let count = (layers[i + 1].layerType == .output) ? 1 : layers[i + 1].neurons.count - 1
+                let count = (layers[i + 1].layerType == .output) ? layers[i + 1].neurons.count : layers[i + 1].neurons.count - 1
                 for i2 in 0..<count {
                     for i3 in 0..<layers[i].neurons.count {
                         weights[i][i3 + i2 * layers[i].neurons.count].prev = layers[i].neurons[i3]
@@ -258,7 +277,7 @@ class NeuralNetwork: NSObject {
         
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH-mm-ss dd.MM.yy"
+        formatter.dateFormat = "dd.MM.yy HH-mm-ss"
         let dateString = formatter.string(from: date)
         
         var text = ""
@@ -281,12 +300,19 @@ class NeuralNetwork: NSObject {
     // MARK: - Helpers
     
     private func addAverageError() {
-        var sum: Float = 0.0
+        let targetSize = layers.last!.neurons.count
         
-        for error in errors {
-            sum += error
+        var averageError = [Float]()
+        var sum: [Float] = [Float](repeating: 0, count: targetSize)
+        
+        for i in 0..<targetSize {
+            for j in 0..<errors.count {
+                sum[i] += errors[j][i]
+            }
+            
+            averageError.append(sum[i] / Float(errors.count))
         }
         
-        averageErrors.append(sum / Float(errors.count))
+        averageErrors.append(averageError)
     }
 }

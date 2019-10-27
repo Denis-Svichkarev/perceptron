@@ -59,7 +59,7 @@ class GraphBuilder: NSObject {
         chartView.animate(xAxisDuration: 2.5)
     }
     
-    static func draw(chartView: LineChartView, data: [Float]) {
+    static func draw(chartView: LineChartView, data: [[Float]]) {
         //        let values = (0..<count).map { (i) -> ChartDataEntry in
         //            let val = (-2.0...2.0).random()
         //            return ChartDataEntry(x: Double(i), y: val, icon: nil)
@@ -69,7 +69,7 @@ class GraphBuilder: NSObject {
         
         for (index, i) in data.enumerated() {
             //print("\(index)")
-            values.append(ChartDataEntry(x: Double(index), y: Double(fabs(i * 100)), icon: nil))
+            values.append(ChartDataEntry(x: Double(index), y: Double(fabs(i.first! * 100)), icon: nil))
         }
         
         let set1 = LineChartDataSet(entries: values, label: "DataSet 1 (x100)")
