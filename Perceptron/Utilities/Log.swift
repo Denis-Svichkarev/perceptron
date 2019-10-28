@@ -31,7 +31,7 @@ class Log: NSObject {
                 }
             }
             
-            let predictions = network.forward(input: x, targetOutput: nil)
+            let predictions = network.forward(input: x, targetOutput: nil).result
             
             for j in 0..<predictions.count {
                 let value = Double(predictions[j] * 100).rounded(toPlaces: 2)

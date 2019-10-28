@@ -20,14 +20,14 @@ class ViewController: UIViewController {
         
         // MARK: - Initialization
         
-        let network = NeuralNetwork(inputLayerSize: 3, hiddenLayerSize: 3, outputLayerSize: 1)
+        let network = NeuralNetwork(inputLayerSize: 4, hiddenLayerSize: 4, outputLayerSize: 2)
                 
-        guard let trainingData = network.importTrainingData(name: "training ex2.txt") else {
+        guard let trainingData = network.importTrainingData(name: "training ex4.txt") else {
             print("Could not load training data")
             return
         }
             
-        guard let testData = network.importTestData(name: "test ex2.txt") else {
+        guard let testData = network.importTestData(name: "test ex4.txt") else {
             print("Could not load test data")
             return
         }

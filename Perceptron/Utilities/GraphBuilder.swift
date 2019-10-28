@@ -68,8 +68,16 @@ class GraphBuilder: NSObject {
         var values = [ChartDataEntry]()
         
         for (index, i) in data.enumerated() {
-            //print("\(index)")
-            values.append(ChartDataEntry(x: Double(index), y: Double(fabs(i.first! * 100)), icon: nil))
+            //print("\(i[0]):\(i[1])\n")
+            var sum: Float = 0
+            
+            for j in i {
+                sum += abs(j)
+            }
+            
+            sum /= Float(i.count)
+            
+            values.append(ChartDataEntry(x: Double(index), y: Double(sum * 100), icon: nil))
         }
         
         let set1 = LineChartDataSet(entries: values, label: "DataSet 1 (x100)")

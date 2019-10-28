@@ -80,9 +80,19 @@ class NeuralNetwork: NSObject {
     }
     
     func run(input: [[Float]], targetOutput: [[Float]]) {
+        let start = DispatchTime.now()
+        
         for _ in 0..<NeuralNetwork.iterations {
             for i in 0..<targetOutput.count {
-                errors.append(forward(input: input[i], targetOutput: targetOutput[i]))
+                let error = forward(input: input[i], targetOutput: targetOutput[i])
+                
+                if targetOutput[i].count > 1 {
+                    errors.append(error.error!)
+                    
+                } else {
+                    errors.append(error.error!)
+                }
+                
                 backprop()
             }
             
@@ -90,9 +100,15 @@ class NeuralNetwork: NSObject {
             addAverageError()
             errors.removeAll()
         }
+        
+        let end = DispatchTime.now()
+        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
+        let timeInterval = Double(nanoTime) / 1_000_000_000
+        
+        print("Neural network training time \(timeInterval.rounded(toPlaces: 3)) seconds\n")
     }
     
-    func forward(input: [Float], targetOutput: [Float]?) -> [Float] {
+    func forward(input: [Float], targetOutput: [Float]?) -> (error: [Float]?, result: [Float]) {
         
         for i in 0..<input.count {
             weights[0][i].prev.x = input[i]
@@ -126,6 +142,12 @@ class NeuralNetwork: NSObject {
             }
         }
         
+        var result = [Float](repeating: 0, count: layers.last!.neurons.count)
+        
+        for i in 0..<layers.last!.neurons.count {
+            result[i] = outputs[i].x
+        }
+        
         if let targetOutput = targetOutput {
             var error = [Float](repeating: 0, count: targetOutput.count)
             
@@ -134,16 +156,11 @@ class NeuralNetwork: NSObject {
                 outputs[i].error = error[i]
             }
             
-            return error
+            return (error, result)
             
         } else {
-            var result = [Float](repeating: 0, count: layers.last!.neurons.count)
             
-            for i in 0..<layers.last!.neurons.count {
-                result[i] = outputs[i].x
-            }
-            
-            return result
+            return (nil, result)
         }
     }
     
@@ -192,10 +209,6 @@ class NeuralNetwork: NSObject {
                 
                 let targets = token1[0].components(separatedBy: exampleDelimiter)
                 let features = token1[1].components(separatedBy: exampleDelimiter)
-                
-//                if let result = Float(token1[0]) {
-//                    results.append([result])
-//                }
                 
                 results.append([])
                 
