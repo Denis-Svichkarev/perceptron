@@ -19,7 +19,7 @@ class NeuralNetwork: NSObject {
     var errors: [[Float]] = []            // array of errors of the neurons output per an iteration
     var averageErrors: [[Float]] = []     // array of average errors per N iterations
     
-    static var iterations: Int = 1000
+    static var iterations: Int = 5000
     static var learningRate: Float = 0.3
     static var momentum: Float = 1
     

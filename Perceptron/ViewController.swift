@@ -13,15 +13,15 @@ class ViewController: UIViewController {
 
     @IBOutlet var chartView: LineChartView!
     
-    let trainingDataFileName = "training ex4.txt"
-    let testDataFileName     = "test ex4.txt"
+    let trainingDataFileName = "Level 1" + ".txt"
+    let testDataFileName     = "Level 1 test" + ".txt"
     
-    let modelFileName        = "weights 27.10.19 21-42-29.txt"
-    let networkStucture      = [4, 4, 2]
+    let modelFileName        = "Level 1 weights" + ".txt"
+    let networkStucture      = [2, 2, 1]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         GraphBuilder.configure(chartView: chartView)
         
         // MARK: - Initialization
@@ -38,8 +38,8 @@ class ViewController: UIViewController {
         
         // MARK: - Training
         
-        network.run(input: trainingData.data, targetOutput: trainingData.results)
-        //network.importModel(name: modelFileName)
+        //network.run(input: trainingData.data, targetOutput: trainingData.results)
+        network.importModel(name: modelFileName)
                
         // MARK: - Prediction
         
