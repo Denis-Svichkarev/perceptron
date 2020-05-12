@@ -2,21 +2,25 @@ PODS:
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
+  - IQKeyboardManagerSwift (5.0.0)
   - Surge (2.0.0)
 
 DEPENDENCIES:
   - Charts
+  - IQKeyboardManagerSwift (= 5.0.0)
   - Surge (~> 2.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Charts
+    - IQKeyboardManagerSwift
     - Surge
 
 SPEC CHECKSUMS:
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
+  IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
   Surge: 1f0286bc5f0fe4283f3455479895bf85c7ef7760
 
-PODFILE CHECKSUM: b5d72b4c4e55f772a0d9aab5fb8c248764893228
+PODFILE CHECKSUM: 46945ece1d348bb5f18005298f6083d4f3f7325f
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.9.1

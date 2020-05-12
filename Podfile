@@ -5,4 +5,5 @@ use_frameworks!
 target "Perceptron" do
     pod 'Surge', '~> 2.0.0'
     pod 'Charts'
+    pod 'IQKeyboardManagerSwift', '5.0.0'
 end
