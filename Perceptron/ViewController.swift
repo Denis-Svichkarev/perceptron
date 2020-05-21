@@ -22,17 +22,29 @@ class ViewController: UIViewController {
     @IBOutlet weak var testDataTextField: UITextField!
     @IBOutlet weak var trainingDataTextField: UITextField!
     
+    @IBOutlet weak var iterationsTextField: UITextField!
+    @IBOutlet weak var learningRateTextField: UITextField!
+    @IBOutlet weak var momentumTextField: UITextField!
+    
     @IBOutlet weak var consoleTextView: UITextView!
     
-    let trainingDataFileName = "ex3-training" + ".txt"
-    let testDataFileName     = "ex3-test" + ".txt"
+    var inputLayerString = "4"
+    var hiddenLayerString = "2"
+    var ouputLayerString = "2"
     
-    let importModelFileName  = "weights 11.05.20 20-01-05" + ".txt"
-    let networkStucture      = [400, 2, 2]
+    var importModelFileName  = "weights 11.05.20 20-48-48" + ".txt"
+    var testDataFileName     = "ex2-test" + ".txt"
+    var trainingDataFileName = "ex2-training" + ".txt"
+    
+    var iterations = "\(NeuralNetwork.iterations)"
+    var learningRate = "\(NeuralNetwork.learningRate)"
+    var momentum = "\(NeuralNetwork.momentum)"
     
     var network: NeuralNetwork?
     var trainingData: (data: [[Float]], results: [[Float]])?
     var testData: [[Float]]?
+    
+    // MARK: - Controller Lyfe Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +54,57 @@ class ViewController: UIViewController {
 //
 //        return
         
+        inputLayerTextField.text = inputLayerString
+        hiddenLayerTextField.text = hiddenLayerString
+        outputLayerTextField.text = ouputLayerString
+        
+        modelTextField.text = importModelFileName
+        testDataTextField.text = testDataFileName
+        trainingDataTextField.text = trainingDataFileName
+        
+        iterationsTextField.text = iterations
+        learningRateTextField.text = learningRate
+        momentumTextField.text = momentum
+        
         consoleTextView.delegate = self
+        
+        inputLayerTextField.delegate = self
+        hiddenLayerTextField.delegate = self
+        outputLayerTextField.delegate = self
+        
+        modelTextField.delegate = self
+        testDataTextField.delegate = self
+        trainingDataTextField.delegate = self
+        
+        iterationsTextField.delegate = self
+        learningRateTextField.delegate = self
+        momentumTextField.delegate = self
         
         navigationItem.title = "Perceptron"
         GraphBuilder.configure(chartView: chartView)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotificationReceieved), name: NSNotification.Name(rawValue: "NeuralNetworkNotification"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Notifications
+    
+    @objc func onNotificationReceieved(notification: NSNotification) {
+        if let text = notification.object as? String {
+            output(text: text)
+        }
+    }
+    
+    // MARK: - Image processing
     
     func convertImagesToText() -> String {
         var trainingString = ""
@@ -111,14 +169,34 @@ class ViewController: UIViewController {
     // MARK: - IB Actions - Settings
     
     @IBAction func applySettings(_ sender: Any) {
-        network = NeuralNetwork(inputLayerSize: networkStucture[0], hiddenLayerSize: networkStucture[1], outputLayerSize: networkStucture[2])
+        guard let inputText = inputLayerTextField.text, let inputLayer = Int(inputText) else {
+            output(text: "Incorrect input layer")
+            return
+        }
+        
+        guard let hiddenText = hiddenLayerTextField.text, let hiddenLayer = Int(hiddenText) else {
+            output(text: "Incorrect hidden layer")
+            return
+        }
+        
+        guard let outputText = outputLayerTextField.text, let outputLayer = Int(outputText) else {
+            output(text: "Incorrect output layer")
+            return
+        }
+        
+        NeuralNetwork.iterations = Int(iterations) ?? 10
+        NeuralNetwork.learningRate = Float(learningRate) ?? 0.3
+        NeuralNetwork.momentum = Float(momentum) ?? 1
+        
+        network = NeuralNetwork(inputLayerSize: inputLayer, hiddenLayerSize: hiddenLayer, outputLayerSize: outputLayer)
+        output(text: "Successful Neural network initialization")
     }
     
     // MARK: - IB Actions - Data
     
     @IBAction func importTrainingData(_ sender: Any) {
         guard let network = network else {
-            output(text: "Model is empty")
+            output(text: "Neural network is not initialized")
             return
         }
         
@@ -128,11 +206,12 @@ class ViewController: UIViewController {
         }
         
         self.trainingData = trainingData
+        output(text: "Imported training data: \(trainingDataFileName)")
     }
     
     @IBAction func importTestData(_ sender: Any) {
         guard let network = network else {
-            output(text: "Model is empty")
+            output(text: "Neural network is not initialized")
             return
         }
         
@@ -142,22 +221,24 @@ class ViewController: UIViewController {
         }
         
         self.testData = testData
+        output(text: "Imported test data: \(testDataFileName)")
     }
     
     @IBAction func importModel(_ sender: Any) {
         guard let network = network else {
-            output(text: "Model is empty")
+            output(text: "Neural network is not initialized")
             return
         }
         
         network.importModel(name: importModelFileName)
+        output(text: "Imported model: \(importModelFileName)")
     }
     
     // MARK: - IB Actions - Training
     
     @IBAction func runModel(_ sender: Any) {
         guard let network = network else {
-            output(text: "Model is empty")
+            output(text: "Neural network is not initialized")
             return
         }
         
@@ -166,16 +247,24 @@ class ViewController: UIViewController {
             return
         }
         
-        network.run(input: trainingData.data, targetOutput: trainingData.results)
+        output(text: "Training...")
         
-        if network.averageErrors.count > 0 {
-            GraphBuilder.draw(chartView: chartView, data: network.averageErrors)
+        DispatchQueue.global().async {
+            network.run(input: trainingData.data, targetOutput: trainingData.results)
+
+            DispatchQueue.main.async {
+                self.output(text: "Finish")
+                
+                if network.averageErrors.count > 0 {
+                    GraphBuilder.draw(chartView: self.chartView, data: network.averageErrors)
+                }
+            }
         }
     }
     
     @IBAction func exportModel(_ sender: Any) {
         guard let network = network else {
-            output(text: "Model is empty")
+            output(text: "Neural network is not initialized")
             return
         }
         
@@ -186,7 +275,7 @@ class ViewController: UIViewController {
     
     @IBAction func predict(_ sender: Any) {
         guard let network = network else {
-            output(text: "Model is empty")
+            output(text: "Neural network is not initialized")
             return
         }
         
@@ -215,6 +304,26 @@ extension ViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.contains("- clear") {
             textView.text = ""
+        }
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case inputLayerTextField: inputLayerString = textField.text ?? ""
+        case hiddenLayerTextField: hiddenLayerString = textField.text ?? ""
+        case outputLayerTextField: ouputLayerString = textField.text ?? ""
+            
+        case modelTextField: importModelFileName = textField.text ?? ""
+        case testDataTextField: testDataFileName = textField.text ?? ""
+        case trainingDataTextField: trainingDataFileName = textField.text ?? ""
+            
+        case iterationsTextField: iterations = textField.text ?? ""
+        case learningRateTextField: learningRate = textField.text ?? ""
+        case momentumTextField: momentum = textField.text ?? ""
+            
+        default: break
         }
     }
 }

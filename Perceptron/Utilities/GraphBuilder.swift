@@ -67,6 +67,7 @@ class GraphBuilder: NSObject {
         
         var values = [ChartDataEntry]()
         
+        print("Average error:\n")
         for (index, i) in data.enumerated() {
             //print("\(i[0]):\(i[1])\n")
             var sum: Float = 0
@@ -77,8 +78,10 @@ class GraphBuilder: NSObject {
             
             sum /= Float(i.count)
             
+            print("\(Double(sum * 100))")
             values.append(ChartDataEntry(x: Double(index), y: Double(sum * 100), icon: nil))
         }
+        print("-----------------------\n")
         
         let set1 = LineChartDataSet(entries: values, label: "DataSet 1 (x100)")
         set1.drawIconsEnabled = false

@@ -19,13 +19,16 @@ class NeuralNetwork: NSObject {
     var errors: [[Float]] = []            // array of errors of the neurons output per an iteration
     var averageErrors: [[Float]] = []     // array of average errors per N iterations
     
-    static var iterations: Int = 100
+    static var iterations: Int = 10
     static var learningRate: Float = 0.3
     static var momentum: Float = 1
     
     // MARK: - Algorithm
     
     init(inputLayerSize: Int, hiddenLayerSize: Int, outputLayerSize: Int) {
+        
+        let initLog = "NN init: \(inputLayerSize)x\(hiddenLayerSize)x\(outputLayerSize), iterations: \(NeuralNetwork.iterations), rate: \(NeuralNetwork.learningRate), momentum: \(NeuralNetwork.momentum)"
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NeuralNetworkNotification"), object: initLog)
         
         layers.append(Layer(layerType: .input, index: 1, count: inputLayerSize, bias: true))
         layers.append(Layer(layerType: .hidden, index: 2, count: hiddenLayerSize, bias: true))
@@ -82,7 +85,17 @@ class NeuralNetwork: NSObject {
     func run(input: [[Float]], targetOutput: [[Float]]) {
         let start = DispatchTime.now()
         
-        for _ in 0..<NeuralNetwork.iterations {
+        for i in 0..<NeuralNetwork.iterations {
+            let divider = NeuralNetwork.iterations / 10
+            
+            if divider >= 500 && i % divider == 0 {
+                let progress = Int(Double(i) * (1.0 / Double(NeuralNetwork.iterations)) * 100)
+                let timeLog = "[progress: \(progress)%]"
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NeuralNetworkNotification"), object: timeLog)
+                }
+            }
+            
             for i in 0..<targetOutput.count {
                 let error = forward(input: input[i], targetOutput: targetOutput[i])
                 
@@ -105,7 +118,10 @@ class NeuralNetwork: NSObject {
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000_000
         
-        print("Neural network training time \(timeInterval.rounded(toPlaces: 3)) seconds\n")
+        let timeLog = "Neural network training time \(timeInterval.rounded(toPlaces: 3)) seconds"
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NeuralNetworkNotification"), object: timeLog)
+        }
     }
     
     func forward(input: [Float], targetOutput: [Float]?) -> (error: [Float]?, result: [Float]) {
