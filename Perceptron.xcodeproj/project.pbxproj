@@ -3,10 +3,52 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25036558233CB8C200572B8E /* Neuron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036557233CB8C200572B8E /* Neuron.swift */; };
+		2503655A233CB98200572B8E /* NeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036559233CB98200572B8E /* NeuralNetwork.swift */; };
+		2503655C233CC97A00572B8E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503655B233CC97A00572B8E /* Layer.swift */; };
+		25036565233CF77400572B8E /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036561233CF77400572B8E /* Interval.swift */; };
+		25036566233CF77400572B8E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036562233CF77400572B8E /* Operators.swift */; };
+		25036567233CF77400572B8E /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036563233CF77400572B8E /* Vector.swift */; };
+		25036568233CF77400572B8E /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25036564233CF77400572B8E /* Matrix.swift */; };
+		2503658E233DF22A00572B8E /* ActivationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503658D233DF22900572B8E /* ActivationFunction.swift */; };
+		253C67B6234220D400D00823 /* GraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253C67B5234220D400D00823 /* GraphBuilder.swift */; };
+		25457D792354F1130048B35D /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25457D782354F1130048B35D /* Random.swift */; };
+		25616EB9246993E70038DE95 /* CoreImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25616EB8246993E70038DE95 /* CoreImageService.m */; };
+		25616EC62469A4390038DE95 /* A-letter-002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EBC2469A4390038DE95 /* A-letter-002.jpg */; };
+		25616EC72469A4390038DE95 /* A-letter-009.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EBD2469A4390038DE95 /* A-letter-009.jpg */; };
+		25616EC82469A4390038DE95 /* A-letter-011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EBE2469A4390038DE95 /* A-letter-011.jpg */; };
+		25616EC92469A4390038DE95 /* A-letter-008.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EBF2469A4390038DE95 /* A-letter-008.jpg */; };
+		25616ECA2469A4390038DE95 /* A-letter-004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EC02469A4390038DE95 /* A-letter-004.jpg */; };
+		25616ECB2469A4390038DE95 /* A-letter-010.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EC12469A4390038DE95 /* A-letter-010.jpg */; };
+		25616ECC2469A4390038DE95 /* A-letter-005.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EC22469A4390038DE95 /* A-letter-005.jpg */; };
+		25616ECD2469A4390038DE95 /* A-letter-007.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EC32469A4390038DE95 /* A-letter-007.jpg */; };
+		25616ECE2469A4390038DE95 /* A-letter-006.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EC42469A4390038DE95 /* A-letter-006.jpg */; };
+		25616ECF2469A4390038DE95 /* A-letter-003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EC52469A4390038DE95 /* A-letter-003.jpg */; };
+		25616EDA2469A4410038DE95 /* C-letter-006.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED02469A4400038DE95 /* C-letter-006.jpg */; };
+		25616EDB2469A4410038DE95 /* C-letter-011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED12469A4400038DE95 /* C-letter-011.jpg */; };
+		25616EDC2469A4410038DE95 /* C-letter-007.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED22469A4400038DE95 /* C-letter-007.jpg */; };
+		25616EDD2469A4410038DE95 /* C-letter-004.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED32469A4400038DE95 /* C-letter-004.jpg */; };
+		25616EDE2469A4410038DE95 /* C-letter-002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED42469A4410038DE95 /* C-letter-002.jpg */; };
+		25616EDF2469A4410038DE95 /* C-letter-008.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED52469A4410038DE95 /* C-letter-008.jpg */; };
+		25616EE02469A4410038DE95 /* C-letter-005.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED62469A4410038DE95 /* C-letter-005.jpg */; };
+		25616EE12469A4410038DE95 /* C-letter-003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED72469A4410038DE95 /* C-letter-003.jpg */; };
+		25616EE22469A4410038DE95 /* C-letter-009.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED82469A4410038DE95 /* C-letter-009.jpg */; };
+		25616EE32469A4410038DE95 /* C-letter-010.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616ED92469A4410038DE95 /* C-letter-010.jpg */; };
+		25616EE72469A4B20038DE95 /* A-letter-001-test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EE52469A4B20038DE95 /* A-letter-001-test.jpg */; };
+		25616EE82469A4B20038DE95 /* C-letter-001-test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25616EE62469A4B20038DE95 /* C-letter-001-test.jpg */; };
+		25616EEB246AF4910038DE95 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25616EEA246AF4910038DE95 /* UIViewController.swift */; };
+		25ADA0E023521E1D00ADEF7C /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ADA0DF23521E1D00ADEF7C /* Weight.swift */; };
+		25AEC98D235A2D7700429BDA /* ReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC98C235A2D7700429BDA /* ReadWrite.swift */; };
+		25AEC98F235A336B00429BDA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC98E235A336B00429BDA /* String.swift */; };
+		25AEC991235B19CE00429BDA /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC990235B19CE00429BDA /* Double.swift */; };
+		25AEC993235B1B0A00429BDA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AEC992235B1B0A00429BDA /* Log.swift */; };
+		25DDD40C2467F4C400F46464 /* A-letter-001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25DDD40B2467F4C400F46464 /* A-letter-001.jpg */; };
+		25DDD40E2467F9CF00F46464 /* C-letter-001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25DDD40D2467F9CF00F46464 /* C-letter-001.jpg */; };
+		25DDD4102468094F00F46464 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDD40F2468094F00F46464 /* UIImage.swift */; };
 		25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254022B38C230042BED4 /* AppDelegate.swift */; };
 		25E1254322B38C230042BED4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1254222B38C230042BED4 /* ViewController.swift */; };
 		25E1254622B38C230042BED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E1254422B38C230042BED4 /* Main.storyboard */; };
@@ -14,6 +56,7 @@
 		25E1254B22B38C260042BED4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E1254922B38C260042BED4 /* LaunchScreen.storyboard */; };
 		25E1255622B38C260042BED4 /* PerceptronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1255522B38C260042BED4 /* PerceptronTests.swift */; };
 		25E1256122B38C260042BED4 /* PerceptronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1256022B38C260042BED4 /* PerceptronUITests.swift */; };
+		785C5834556D4FC97A08950B /* Pods_Perceptron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4793C9B96DB7E85A9C75341F /* Pods_Perceptron.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +77,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25036557233CB8C200572B8E /* Neuron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neuron.swift; sourceTree = "<group>"; };
+		25036559233CB98200572B8E /* NeuralNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralNetwork.swift; sourceTree = "<group>"; };
+		2503655B233CC97A00572B8E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		25036561233CF77400572B8E /* Interval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
+		25036562233CF77400572B8E /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		25036563233CF77400572B8E /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		25036564233CF77400572B8E /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		2503658D233DF22900572B8E /* ActivationFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationFunction.swift; sourceTree = "<group>"; };
+		253C67B5234220D400D00823 /* GraphBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBuilder.swift; sourceTree = "<group>"; };
+		25457D782354F1130048B35D /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		25616EB6246993E60038DE95 /* Perceptron-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Perceptron-Bridging-Header.h"; sourceTree = "<group>"; };
+		25616EB7246993E70038DE95 /* CoreImageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageService.h; sourceTree = "<group>"; };
+		25616EB8246993E70038DE95 /* CoreImageService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreImageService.m; sourceTree = "<group>"; };
+		25616EBC2469A4390038DE95 /* A-letter-002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-002.jpg"; sourceTree = "<group>"; };
+		25616EBD2469A4390038DE95 /* A-letter-009.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-009.jpg"; sourceTree = "<group>"; };
+		25616EBE2469A4390038DE95 /* A-letter-011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-011.jpg"; sourceTree = "<group>"; };
+		25616EBF2469A4390038DE95 /* A-letter-008.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-008.jpg"; sourceTree = "<group>"; };
+		25616EC02469A4390038DE95 /* A-letter-004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-004.jpg"; sourceTree = "<group>"; };
+		25616EC12469A4390038DE95 /* A-letter-010.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-010.jpg"; sourceTree = "<group>"; };
+		25616EC22469A4390038DE95 /* A-letter-005.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-005.jpg"; sourceTree = "<group>"; };
+		25616EC32469A4390038DE95 /* A-letter-007.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-007.jpg"; sourceTree = "<group>"; };
+		25616EC42469A4390038DE95 /* A-letter-006.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-006.jpg"; sourceTree = "<group>"; };
+		25616EC52469A4390038DE95 /* A-letter-003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-003.jpg"; sourceTree = "<group>"; };
+		25616ED02469A4400038DE95 /* C-letter-006.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-006.jpg"; sourceTree = "<group>"; };
+		25616ED12469A4400038DE95 /* C-letter-011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-011.jpg"; sourceTree = "<group>"; };
+		25616ED22469A4400038DE95 /* C-letter-007.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-007.jpg"; sourceTree = "<group>"; };
+		25616ED32469A4400038DE95 /* C-letter-004.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-004.jpg"; sourceTree = "<group>"; };
+		25616ED42469A4410038DE95 /* C-letter-002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-002.jpg"; sourceTree = "<group>"; };
+		25616ED52469A4410038DE95 /* C-letter-008.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-008.jpg"; sourceTree = "<group>"; };
+		25616ED62469A4410038DE95 /* C-letter-005.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-005.jpg"; sourceTree = "<group>"; };
+		25616ED72469A4410038DE95 /* C-letter-003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-003.jpg"; sourceTree = "<group>"; };
+		25616ED82469A4410038DE95 /* C-letter-009.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-009.jpg"; sourceTree = "<group>"; };
+		25616ED92469A4410038DE95 /* C-letter-010.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-010.jpg"; sourceTree = "<group>"; };
+		25616EE52469A4B20038DE95 /* A-letter-001-test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-001-test.jpg"; sourceTree = "<group>"; };
+		25616EE62469A4B20038DE95 /* C-letter-001-test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-001-test.jpg"; sourceTree = "<group>"; };
+		25616EEA246AF4910038DE95 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		25ADA0DF23521E1D00ADEF7C /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
+		25AEC98C235A2D7700429BDA /* ReadWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWrite.swift; sourceTree = "<group>"; };
+		25AEC98E235A336B00429BDA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		25AEC990235B19CE00429BDA /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		25AEC992235B1B0A00429BDA /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		25DDD40B2467F4C400F46464 /* A-letter-001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "A-letter-001.jpg"; sourceTree = "<group>"; };
+		25DDD40D2467F9CF00F46464 /* C-letter-001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C-letter-001.jpg"; sourceTree = "<group>"; };
+		25DDD40F2468094F00F46464 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		25E1253D22B38C230042BED4 /* Perceptron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perceptron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E1254022B38C230042BED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E1254222B38C230042BED4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +134,9 @@
 		25E1255C22B38C260042BED4 /* PerceptronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerceptronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E1256022B38C260042BED4 /* PerceptronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceptronUITests.swift; sourceTree = "<group>"; };
 		25E1256222B38C260042BED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4793C9B96DB7E85A9C75341F /* Pods_Perceptron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Perceptron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		577978C923F4AC6E18F187C4 /* Pods-Perceptron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Perceptron.release.xcconfig"; path = "Target Support Files/Pods-Perceptron/Pods-Perceptron.release.xcconfig"; sourceTree = "<group>"; };
+		A806FCACA332C765C28F300F /* Pods-Perceptron.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Perceptron.debug.xcconfig"; path = "Target Support Files/Pods-Perceptron/Pods-Perceptron.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785C5834556D4FC97A08950B /* Pods_Perceptron.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +165,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		038A81D4FC1B4A48CFD04915 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4793C9B96DB7E85A9C75341F /* Pods_Perceptron.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		25036560233CF77400572B8E /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				25036561233CF77400572B8E /* Interval.swift */,
+				25036562233CF77400572B8E /* Operators.swift */,
+				25036563233CF77400572B8E /* Vector.swift */,
+				25036564233CF77400572B8E /* Matrix.swift */,
+			);
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		25457D772354EFEF0048B35D /* FFN */ = {
+			isa = PBXGroup;
+			children = (
+				25036559233CB98200572B8E /* NeuralNetwork.swift */,
+				2503655B233CC97A00572B8E /* Layer.swift */,
+				25036557233CB8C200572B8E /* Neuron.swift */,
+				25ADA0DF23521E1D00ADEF7C /* Weight.swift */,
+			);
+			path = FFN;
+			sourceTree = "<group>";
+		};
+		25616EBA246995E40038DE95 /* A */ = {
+			isa = PBXGroup;
+			children = (
+				25616EBC2469A4390038DE95 /* A-letter-002.jpg */,
+				25616EC52469A4390038DE95 /* A-letter-003.jpg */,
+				25616EC02469A4390038DE95 /* A-letter-004.jpg */,
+				25616EC22469A4390038DE95 /* A-letter-005.jpg */,
+				25616EC42469A4390038DE95 /* A-letter-006.jpg */,
+				25616EC32469A4390038DE95 /* A-letter-007.jpg */,
+				25616EBF2469A4390038DE95 /* A-letter-008.jpg */,
+				25616EBD2469A4390038DE95 /* A-letter-009.jpg */,
+				25616EC12469A4390038DE95 /* A-letter-010.jpg */,
+				25616EBE2469A4390038DE95 /* A-letter-011.jpg */,
+				25DDD40B2467F4C400F46464 /* A-letter-001.jpg */,
+			);
+			path = A;
+			sourceTree = "<group>";
+		};
+		25616EBB246995E80038DE95 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				25616ED42469A4410038DE95 /* C-letter-002.jpg */,
+				25616ED72469A4410038DE95 /* C-letter-003.jpg */,
+				25616ED32469A4400038DE95 /* C-letter-004.jpg */,
+				25616ED62469A4410038DE95 /* C-letter-005.jpg */,
+				25616ED02469A4400038DE95 /* C-letter-006.jpg */,
+				25616ED22469A4400038DE95 /* C-letter-007.jpg */,
+				25616ED52469A4410038DE95 /* C-letter-008.jpg */,
+				25616ED82469A4410038DE95 /* C-letter-009.jpg */,
+				25616ED92469A4410038DE95 /* C-letter-010.jpg */,
+				25616ED12469A4400038DE95 /* C-letter-011.jpg */,
+				25DDD40D2467F9CF00F46464 /* C-letter-001.jpg */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		25616EE42469A4A80038DE95 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				25616EE52469A4B20038DE95 /* A-letter-001-test.jpg */,
+				25616EE62469A4B20038DE95 /* C-letter-001-test.jpg */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		25DDD40A2467F4A200F46464 /* Letters */ = {
+			isa = PBXGroup;
+			children = (
+				25616EE42469A4A80038DE95 /* test */,
+				25616EBA246995E40038DE95 /* A */,
+				25616EBB246995E80038DE95 /* C */,
+			);
+			path = Letters;
+			sourceTree = "<group>";
+		};
 		25E1253422B38C230042BED4 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +257,8 @@
 				25E1255422B38C260042BED4 /* PerceptronTests */,
 				25E1255F22B38C260042BED4 /* PerceptronUITests */,
 				25E1253E22B38C230042BED4 /* Products */,
+				2CED8FAEA05C67C937A973C1 /* Pods */,
+				038A81D4FC1B4A48CFD04915 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +277,10 @@
 			children = (
 				25E1254022B38C230042BED4 /* AppDelegate.swift */,
 				25E1254222B38C230042BED4 /* ViewController.swift */,
+				25457D772354EFEF0048B35D /* FFN */,
+				25DDD40A2467F4A200F46464 /* Letters */,
+				25E822B6235A102D00F7961B /* Utilities */,
+				25036560233CF77400572B8E /* Matrix */,
 				25E1254422B38C230042BED4 /* Main.storyboard */,
 				25E1254722B38C260042BED4 /* Assets.xcassets */,
 				25E1254922B38C260042BED4 /* LaunchScreen.storyboard */,
@@ -125,6 +307,34 @@
 			path = PerceptronUITests;
 			sourceTree = "<group>";
 		};
+		25E822B6235A102D00F7961B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2503658D233DF22900572B8E /* ActivationFunction.swift */,
+				25457D782354F1130048B35D /* Random.swift */,
+				253C67B5234220D400D00823 /* GraphBuilder.swift */,
+				25AEC98C235A2D7700429BDA /* ReadWrite.swift */,
+				25AEC98E235A336B00429BDA /* String.swift */,
+				25AEC990235B19CE00429BDA /* Double.swift */,
+				25AEC992235B1B0A00429BDA /* Log.swift */,
+				25DDD40F2468094F00F46464 /* UIImage.swift */,
+				25616EB7246993E70038DE95 /* CoreImageService.h */,
+				25616EB8246993E70038DE95 /* CoreImageService.m */,
+				25616EB6246993E60038DE95 /* Perceptron-Bridging-Header.h */,
+				25616EEA246AF4910038DE95 /* UIViewController.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2CED8FAEA05C67C937A973C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A806FCACA332C765C28F300F /* Pods-Perceptron.debug.xcconfig */,
+				577978C923F4AC6E18F187C4 /* Pods-Perceptron.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +342,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25E1256522B38C260042BED4 /* Build configuration list for PBXNativeTarget "Perceptron" */;
 			buildPhases = (
+				FCDF10E6A6979CDCCAF63C17 /* [CP] Check Pods Manifest.lock */,
 				25E1253922B38C230042BED4 /* Sources */,
 				25E1253A22B38C230042BED4 /* Frameworks */,
 				25E1253B22B38C230042BED4 /* Resources */,
+				B1D6BB53440E9A71F34DACB0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,13 +405,16 @@
 				TargetAttributes = {
 					25E1253C22B38C230042BED4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1130;
 					};
 					25E1255022B38C260042BED4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1110;
 						TestTargetID = 25E1253C22B38C230042BED4;
 					};
 					25E1255B22B38C260042BED4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1110;
 						TestTargetID = 25E1253C22B38C230042BED4;
 					};
 				};
@@ -229,9 +444,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25616EC62469A4390038DE95 /* A-letter-002.jpg in Resources */,
+				25616EC72469A4390038DE95 /* A-letter-009.jpg in Resources */,
+				25616EDA2469A4410038DE95 /* C-letter-006.jpg in Resources */,
+				25DDD40E2467F9CF00F46464 /* C-letter-001.jpg in Resources */,
+				25616EE12469A4410038DE95 /* C-letter-003.jpg in Resources */,
+				25616EE22469A4410038DE95 /* C-letter-009.jpg in Resources */,
+				25616ECC2469A4390038DE95 /* A-letter-005.jpg in Resources */,
+				25616EE72469A4B20038DE95 /* A-letter-001-test.jpg in Resources */,
 				25E1254B22B38C260042BED4 /* LaunchScreen.storyboard in Resources */,
+				25616EC82469A4390038DE95 /* A-letter-011.jpg in Resources */,
+				25616ECF2469A4390038DE95 /* A-letter-003.jpg in Resources */,
+				25616EDF2469A4410038DE95 /* C-letter-008.jpg in Resources */,
+				25616EE02469A4410038DE95 /* C-letter-005.jpg in Resources */,
+				25616ECB2469A4390038DE95 /* A-letter-010.jpg in Resources */,
+				25616EDB2469A4410038DE95 /* C-letter-011.jpg in Resources */,
+				25DDD40C2467F4C400F46464 /* A-letter-001.jpg in Resources */,
+				25616ECD2469A4390038DE95 /* A-letter-007.jpg in Resources */,
+				25616ECA2469A4390038DE95 /* A-letter-004.jpg in Resources */,
+				25616EC92469A4390038DE95 /* A-letter-008.jpg in Resources */,
+				25616EDE2469A4410038DE95 /* C-letter-002.jpg in Resources */,
 				25E1254822B38C260042BED4 /* Assets.xcassets in Resources */,
+				25616EE82469A4B20038DE95 /* C-letter-001-test.jpg in Resources */,
+				25616ECE2469A4390038DE95 /* A-letter-006.jpg in Resources */,
 				25E1254622B38C230042BED4 /* Main.storyboard in Resources */,
+				25616EDC2469A4410038DE95 /* C-letter-007.jpg in Resources */,
+				25616EDD2469A4410038DE95 /* C-letter-004.jpg in Resources */,
+				25616EE32469A4410038DE95 /* C-letter-010.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +490,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B1D6BB53440E9A71F34DACB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Perceptron/Pods-Perceptron-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Perceptron/Pods-Perceptron-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Perceptron/Pods-Perceptron-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCDF10E6A6979CDCCAF63C17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Perceptron-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		25E1253922B38C230042BED4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				25E1254322B38C230042BED4 /* ViewController.swift in Sources */,
+				2503658E233DF22A00572B8E /* ActivationFunction.swift in Sources */,
+				25AEC991235B19CE00429BDA /* Double.swift in Sources */,
+				25457D792354F1130048B35D /* Random.swift in Sources */,
+				25036558233CB8C200572B8E /* Neuron.swift in Sources */,
+				25036568233CF77400572B8E /* Matrix.swift in Sources */,
+				25036567233CF77400572B8E /* Vector.swift in Sources */,
+				253C67B6234220D400D00823 /* GraphBuilder.swift in Sources */,
+				25AEC993235B1B0A00429BDA /* Log.swift in Sources */,
+				25AEC98D235A2D7700429BDA /* ReadWrite.swift in Sources */,
+				25036566233CF77400572B8E /* Operators.swift in Sources */,
+				25616EB9246993E70038DE95 /* CoreImageService.m in Sources */,
+				25036565233CF77400572B8E /* Interval.swift in Sources */,
+				2503655A233CB98200572B8E /* NeuralNetwork.swift in Sources */,
+				25616EEB246AF4910038DE95 /* UIViewController.swift in Sources */,
+				2503655C233CC97A00572B8E /* Layer.swift in Sources */,
+				25AEC98F235A336B00429BDA /* String.swift in Sources */,
+				25DDD4102468094F00F46464 /* UIImage.swift in Sources */,
 				25E1254122B38C230042BED4 /* AppDelegate.swift in Sources */,
+				25ADA0E023521E1D00ADEF7C /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,36 +727,45 @@
 		};
 		25E1256622B38C260042BED4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A806FCACA332C765C28F300F /* Pods-Perceptron.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74KE6VKKSF;
 				INFOPLIST_FILE = Perceptron/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.Perceptron";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "Perceptron/Utilities/Perceptron-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		25E1256722B38C260042BED4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 577978C923F4AC6E18F187C4 /* Pods-Perceptron.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74KE6VKKSF;
 				INFOPLIST_FILE = Perceptron/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.Perceptron";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "Perceptron/Utilities/Perceptron-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -477,7 +785,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Perceptron.app/Perceptron";
 			};
@@ -498,7 +806,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Perceptron.app/Perceptron";
 			};
@@ -518,7 +826,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Perceptron;
 			};
@@ -538,7 +846,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Denis-Svichkarev.PerceptronUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Perceptron;
 			};
